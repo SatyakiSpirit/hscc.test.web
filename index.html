@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemophilia Society - Calcutta Chapter</title>
+    <style>
+        /* ============ CSS VARIABLES ============ */
+        :root {
+            --primary: #c0392b;
+            --primary-dark: #96281b;
+            --primary-light: #e74c3c;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --bg-light: #fdf2f2;
+            --bg-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --text-white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ============ RESET & BASE ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* ============ LANGUAGE SELECTOR (TOP BAR) ============ */
+        .top-bar {
+            background: var(--secondary);
+            color: var(--text-white);
+            padding: 8px 0;
+            font-size: 14px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .top-bar-left span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--text-white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* ============ CONTAINER ============ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============ HEADER / NAVBAR ============ */
+        .header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-donate-btn {
+            background: var(--primary) !important;
+            color: white !important;
+            padding: 10px 24px !important;
+            border-radius: 25px;
+            font-weight: 600 !important;
+        }
+
+        .nav-donate-btn:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-donate-btn::after {
+            display: none !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-stats {
+            flex: 0 0 350px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-card .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .stat-card .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* ============ SECTION STYLES ============ */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        .about-section {
+            background: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image .image-box {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: var(--border-radius);
+            padding: 40px;
+            color: white;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-image .image-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-image .image-box p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .about-feature .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ============ WHAT IS HEMOPHILIA ============ */
+        .hemophilia-info {
+            background: var(--bg-light);
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .info-card .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ============ ACTIVITIES SECTION ============ */
+        .activities-section {
+            background: var(--bg-white);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .activity-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .activity-card-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .activity-card-body {
+            padding: 25px;
+        }
+
+        .activity-card-body h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .activity-card-body p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============ BLEEDING EMERGENCY ============ */
+        .emergency-section {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .emergency-section .section-title h2,
+        .emergency-section .section-title p {
+            color: white;
+        }
+
+        .emergency-section .underline {
+            background: white;
+        }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .emergency-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .emergency-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .emergency-card ul {
+            list-style: none;
+        }
+
+        .emergency-card ul li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+
+        .emergency-card ul li::before {
+            content: '✓';
+            background: rgba(255,255,255,0.3);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .emergency-helpline {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .emergency-helpline h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .emergency-helpline .phone {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        /* ============ DOS AND DONTS ============ */
+        .dos-donts-section {
+            background: var(--bg-light);
+        }
+
+        .dos-donts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .dos-card, .donts-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .dos-card {
+            border-top: 5px solid #27ae60;
+        }
+
+        .donts-card {
+            border-top: 5px solid #e74c3c;
+        }
+
+        .dos-card h3 {
+            color: #27ae60;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .donts-card h3 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dos-card li, .donts-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .dos-card li:last-child, .donts-card li:last-child {
+            border-bottom: none;
+        }
+
+        .do-icon {
+            color: #27ae60;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .dont-icon {
+            color: #e74c3c;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* ============ DONATION SECTION ============ */
+        .donation-section {
+            background: var(--bg-white);
+        }
+
+        .donation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .qr-section {
+            text-align: center;
+        }
+
+        .qr-code-box {
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .qr-placeholder {
+            width: 250px;
+            height: 250px;
+            background: #f8f8f8;
+            border: 2px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 14px;
+            color: var(--text-light);
+            border-radius: 8px;
+        }
+
+        .qr-placeholder .qr-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .donation-info h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .donation-info p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .bank-details {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .bank-details h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .bank-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bank-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-detail-row .label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .bank-detail-row .value {
+            color: var(--text-light);
+        }
+
+        /* ============ PATIENT REGISTRATION ============ */
+        .registration-section {
+            background: var(--bg-light);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .form-submit .btn {
+            padding: 16px 50px;
+            font-size: 17px;
+        }
+
+        .form-message {
+            text-align: center;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .form-message.loading {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        /* ============ RESOURCES SECTION ============ */
+        .resources-section {
+            background: var(--bg-white);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .resource-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .resource-card .resource-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .resource-card h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .resource-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            color: #bdc3c7;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li {
+            padding: 5px 0;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #bdc3c7;
+        }
+
+        .footer-contact-item .fc-icon {
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* ============ BACK TO TOP ============ */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-white);
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h2 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dos-donts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar .container {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .hero {
+                padding: 60px 0 50px;
+            }
+
+            .hero-text h2 {
+                font-size: 28px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-card .stat-number {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-helpline .phone {
+                font-size: 24px;
+            }
+        }
+
+        /* ============ OVERLAY ============ */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ TOP BAR ============ -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>📧 hemophilia.calcutta@email.com</span>
+                <span>📞 +91 9876543210</span>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+                <button class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
+                <button class="lang-btn" onclick="switchLanguage('hi')">हिन्दी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">🩸</div>
+                    <div class="logo-text">
+                        <h1>Hemophilia Society</h1>
+                        <p>Calcutta Chapter</p>
+                    </div>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-lang-en="Home" data-lang-bn="হোম" data-lang-hi="होम">Home</a></li>
+                    <li><a href="#about" data-lang-en="About" data-lang-bn="সম্পর্কে" data-lang-hi="हमारे बारे में">About</a></li>
+                    <li><a href="#hemophilia" data-lang-en="Hemophilia" data-lang-bn="হিমোফিলিয়া" data-lang-hi="हीमोफीलिया">Hemophilia</a></li>
+                    <li><a href="#activities" data-lang-en="Activities" data-lang-bn="কার্যক্রম" data-lang-hi="गतिविधियाँ">Activities</a></li>
+                    <li><a href="#emergency" data-lang-en="Emergency" data-lang-bn="জরুরি" data-lang-hi="आपातकालीन">Emergency</a></li>
+                    <li><a href="#register" data-lang-en="Register" data-lang-bn="নিবন্ধন" data-lang-hi="पंजीकरण">Register</a></li>
+                    <li><a href="#donate" class="nav-donate-btn" data-lang-en="Donate Now" data-lang-bn="দান করুন" data-lang-hi="दान करें">Donate Now</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 data-lang-en="Together We Care, Together We Fight Hemophilia" 
+                        data-lang-bn="একসাথে আমরা যত্ন নিই, একসাথে হিমোফিলিয়ার বিরুদ্ধে লড়ি" 
+                        data-lang-hi="साथ मिलकर हम देखभाल करें, साथ मिलकर हीमोफीलिया से लड़ें">
+                        Together We Care, Together We Fight Hemophilia
+                    </h2>
+                    <p data-lang-en="Hemophilia Society Calcutta Chapter is dedicated to supporting patients with bleeding disorders, providing medical assistance, awareness programs, and building a caring community." 
+                       data-lang-bn="হিমোফিলিয়া সোসাইটি কলকাতা চ্যাপ্টার রক্তক্ষরণজনিত রোগীদের সহায়তা, চিকিৎসা সহায়তা, সচেতনতা কার্যক্রম এবং একটি যত্নশীল সম্প্রদায় গড়ে তুলতে নিবেদিত।" 
+                       data-lang-hi="हीमोफीलिया सोसाइटी कलकत्ता चैप्टर रक्तस्राव विकारों वाले रोगियों का समर्थन, चिकित्सा सहायता, जागरूकता कार्यक्रम और एक देखभाल समुदाय बनाने के लिए समर्पित है।">
+                        Hemophilia Society Calcutta Chapter is dedicated to supporting patients with bleeding disorders, providing medical assistance, awareness programs, and building a caring community.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#register" class="btn btn-white" data-lang-en="Register as Patient" data-lang-bn="রোগী হিসেবে নিবন্ধন করুন" data-lang-hi="रोगी के रूप में पंजीकरण करें">Register as Patient</a>
+                        <a href="#donate" class="btn btn-outline" data-lang-en="Make a Donation" data-lang-bn="দান করুন" data-lang-hi="दान करें">Make a Donation</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label" data-lang-en="Registered Patients" data-lang-bn="নিবন্ধিত রোগী" data-lang-hi="पंजीकृत रोगी">Registered Patients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label" data-lang-en="Years of Service" data-lang-bn="সেবার বছর" data-lang-hi="सेवा के वर्ष">Years of Service</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label" data-lang-en="Medical Camps" data-lang-bn="মেডিক্যাল ক্যাম্প" data-lang-hi="मेडिकल कैंप">Medical Camps</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label" data-lang-en="Families Helped" data-lang-bn="সাহায্যপ্রাপ্ত পরিবার" data-lang-hi="मदद किए गए परिवार">Families Helped</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="About Our Chapter" data-lang-bn="আমাদের চ্যাপ্টার সম্পর্কে" data-lang-hi="हमारे चैप्टर के बारे में">About Our Chapter</h2>
+                <div class="underline"></div>
+                <p data-lang-en="Serving hemophilia patients in Calcutta and surrounding areas" data-lang-bn="কলকাতা এবং আশেপাশের এলাকায় হিমোফিলিয়া রোগীদের সেবা প্রদান" data-lang-hi="कलकत्ता और आसपास के क्षेत्रों में हीमोफीलिया रोगियों की सेवा">Serving hemophilia patients in Calcutta and surrounding areas</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image animate-on-scroll">
+                    <div class="image-box">
+                        <h3>🩸</h3>
+                        <h3 data-lang-en="Our Mission" data-lang-bn="আমাদের লক্ষ্য" data-lang-hi="हमारा मिशन">Our Mission</h3>
+                        <p data-lang-en="To improve the quality of life for people affected by hemophilia and other bleeding disorders through comprehensive care, education, research and advocacy." 
+                           data-lang-bn="ব্যাপক যত্ন, শিক্ষা, গবেষণা এবং প্রচারের মাধ্যমে হিমোফিলিয়া এবং অন্যান্য রক্তক্ষরণজনিত রোগে আক্রান্ত মানুষদের জীবনযাত্রার মান উন্নত করা।" 
+                           data-lang-hi="व्यापक देखभाल, शिक्षा, अनुसंधान और वकालत के माध्यम से हीमोफीलिया और अन्य रक्तस्राव विकारों से प्रभावित लोगों के जीवन की गुणवत्ता में सुधार करना।">
+                            To improve the quality of life for people affected by hemophilia and other bleeding disorders through comprehensive care, education, research and advocacy.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-content animate-on-scroll">
+                    <h3 data-lang-en="Who We Are" data-lang-bn="আমরা কারা" data-lang-hi="हम कौन हैं">Who We Are</h3>
+                    <p data-lang-en="Hemophilia Society Calcutta Chapter is a non-profit organization working tirelessly to support people living with hemophilia and other inherited bleeding disorders in Calcutta and West Bengal." 
+                       data-lang-bn="হিমোফিলিয়া সোসাইটি কলকাতা চ্যাপ্টার একটি অলাভজনক সংস্থা যা কলকাতা এবং পশ্চিমবঙ্গে হিমোফিলিয়া এবং অন্যান্য উত্তরাধিকারসূত্রে প্রাপ্ত রক্তক্ষরণজনিত রোগে আক্রান্ত মানুষদের সহায়তা করতে অক্লান্তভাবে কাজ করছে।" 
+                       data-lang-hi="हीमोफीलिया सोसाइटी कलकत्ता चैप्टर एक गैर-लाभकारी संगठन है जो कलकत्ता और पश्चिम बंगाल में हीमोफीलिया और अन्य विरासत में मिले रक्तस्राव विकारों से पीड़ित लोगों का समर्थन करने के लिए अथक प्रयास कर रहा है।">
+                        Hemophilia Society Calcutta Chapter is a non-profit organization working tirelessly to support people living with hemophilia and other inherited bleeding disorders in Calcutta and West Bengal.
+                    </p>
+                    <p data-lang-en="We provide comprehensive services including treatment support, physiotherapy, counseling, educational programs, and financial assistance to patients and their families." 
+                       data-lang-bn="আমরা রোগী এবং তাদের পরিবারকে চিকিৎসা সহায়তা, ফিজিওথেরাপি, কাউন্সেলিং, শিক্ষামূলক কার্যক্রম এবং আর্থিক সহায়তা সহ ব্যাপক সেবা প্রদান করি।" 
+                       data-lang-hi="हम रोगियों और उनके परिवारों को उपचार सहायता, फिजियोथेरेपी, परामर्श, शैक्षिक कार्यक्रम और वित्तीय सहायता सहित व्यापक सेवाएं प्रदान करते हैं।">
+                        We provide comprehensive services including treatment support, physiotherapy, counseling, educational programs, and financial assistance to patients and their families.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="icon">🏥</div>
+                            <span data-lang-en="Medical Support" data-lang-bn="চিকিৎসা সহায়তা" data-lang-hi="चिकित्सा सहायता">Medical Support</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">📚</div>
+                            <span data-lang-en="Education" data-lang-bn="শিক্ষা" data-lang-hi="शिक्षा">Education</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">🤝</div>
+                            <span data-lang-en="Community" data-lang-bn="সম্প্রদায়" data-lang-hi="समुदाय">Community</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="icon">💊</div>
+                            <span data-lang-en="Treatment" data-lang-bn="চিকিৎসা" data-lang-hi="उपचार">Treatment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHAT IS HEMOPHILIA ============ -->
+    <section class="section hemophilia-info" id="hemophilia">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Understanding Hemophilia" data-lang-bn="হিমোফিলিয়া বোঝা" data-lang-hi="हीमोफीलिया को समझना">Understanding Hemophilia</h2>
+                <div class="underline"></div>
+                <p data-lang-en="Learn about this inherited bleeding disorder" data-lang-bn="এই উত্তরাধিকারসূত্রে প্রাপ্ত রক্তক্ষরণ ব্যাধি সম্পর্কে জানুন" data-lang-hi="इस विरासत में मिले रक्तस्राव विकार के बारे में जानें">Learn about this inherited bleeding disorder</p>
+            </div>
+            <div class="info-cards">
+                <div class="info-card animate-on-scroll">
+                    <div class="card-icon">🔬</div>
+                    <h3 data-lang-en="What is Hemophilia?" data-lang-bn="হিমোফিলিয়া কী?" data-lang-hi="हीमोफीलिया क्या है?">What is Hemophilia?</h3>
+                    <p data-lang-en="Hemophilia is a rare inherited bleeding disorder where blood doesn't clot normally. It occurs due to deficiency of clotting factors. People with hemophilia bleed longer after injury, surgery, or dental procedures. In severe cases, spontaneous bleeding can occur in joints and muscles." 
+                       data-lang-bn="হিমোফিলিয়া একটি বিরল উত্তরাধিকারসূত্রে প্রাপ্ত রক্তক্ষরণ ব্যাধি যেখানে রক্ত স্বাভাবিকভাবে জমাট বাঁধে না। ক্লটিং ফ্যাক্টরের অভাবে এটি ঘটে। হিমোফিলিয়ায় আক্রান্ত ব্যক্তিদের আঘাত, অস্ত্রোপচার বা দাঁতের চিকিৎসার পরে দীর্ঘ সময় রক্তক্ষরণ হয়। গুরুতর ক্ষেত্রে, জয়েন্ট এবং পেশীতে স্বতঃস্ফূর্ত রক্তক্ষরণ হতে পারে।" 
+                       data-lang-hi="हीमोफीलिया एक दुर्लभ विरासत में मिला रक्तस्राव विकार है जहां रक्त सामान्य रूप से नहीं जमता। यह क्लॉटिंग फैक्टर की कमी के कारण होता है। हीमोफीलिया वाले लोग चोट, सर्जरी या दंत प्रक्रियाओं के बाद अधिक समय तक रक्तस्राव करते हैं। गंभीर मामलों में, जोड़ों और मांसपेशियों में स्वतःस्फूर्त रक्तस्राव हो सकता है।">
+                        Hemophilia is a rare inherited bleeding disorder where blood doesn't clot normally. It occurs due to deficiency of clotting factors. People with hemophilia bleed longer after injury, surgery, or dental procedures. In severe cases, spontaneous bleeding can occur in joints and muscles.
+                    </p>
+                </div>
+                <div class="info-card animate-on-scroll">
+                    <div class="card-icon">🧬</div>
+                    <h3 data-lang-en="Types of Hemophilia" data-lang-bn="হিমোফিলিয়ার প্রকার" data-lang-hi="हीमोफीलिया के प्रकार">Types of Hemophilia</h3>
+                    <p data-lang-en="Hemophilia A (Classic): Caused by lack of Factor VIII - most common type (about 80% of cases). Hemophilia B (Christmas Disease): Caused by lack of Factor IX. Von Willebrand Disease (VWD): Most common inherited bleeding disorder, caused by deficiency of Von Willebrand factor." 
+                       data-lang-bn="হিমোফিলিয়া A (ক্লাসিক): ফ্যাক্টর VIII এর অভাবে হয় - সবচেয়ে সাধারণ প্রকার (প্রায় ৮০% ক্ষেত্রে)। হিমোফিলিয়া B (ক্রিসমাস ডিজিজ): ফ্যাক্টর IX এর অভাবে হয়। ভন উইলেব্র্যান্ড ডিজিজ (VWD): সবচেয়ে সাধারণ উত্তরাধিকারসূত্রে প্রাপ্ত রক্তক্ষরণ ব্যাধি।" 
+                       data-lang-hi="हीमोफीलिया A (क्लासिक): फैक्टर VIII की कमी से होता है - सबसे आम प्रकार (लगभग 80% मामले)। हीमोफीलिया B (क्रिसमस रोग): फैक्टर IX की कमी से होता है। वॉन विलेब्रांड रोग (VWD): सबसे आम विरासत में मिला रक्तस्राव विकार।">
+                        Hemophilia A (Classic): Caused by lack of Factor VIII - most common type (about 80% of cases). Hemophilia B (Christmas Disease): Caused by lack of Factor IX. Von Willebrand Disease (VWD): Most common inherited bleeding disorder, caused by deficiency of Von Willebrand factor.
+                    </p>
+                </div>
+                <div class="info-card animate-on-scroll">
+                    <div class="card-icon">⚠️</div>
+                    <h3 data-lang-en="Signs & Symptoms" data-lang-bn="লক্ষণ ও উপসর্গ" data-lang-hi="संकेत और लक्षण">Signs & Symptoms</h3>
+                    <p data-lang-en="Excessive bleeding from cuts or injuries. Large or deep bruises. Unusual bleeding after vaccinations. Pain, swelling in joints. Blood in urine or stool. Nosebleeds without known cause. In infants, unexplained irritability. Tightness in joints. Prolonged bleeding from tooth extraction." 
+                       data-lang-bn="কাটা বা আঘাত থেকে অতিরিক্ত রক্তক্ষরণ। বড় বা গভীর ক্ষত। টিকা দেওয়ার পরে অস্বাভাবিক রক্তক্ষরণ। জয়েন্টে ব্যথা, ফোলা। প্রস্রাব বা মলে রক্ত। অজানা কারণে নাক দিয়ে রক্ত পড়া। শিশুদের ক্ষেত্রে, অব্যক্ত বিরক্তি। জয়েন্টে আড়ষ্টতা।" 
+                       data-lang-hi="कटने या चोटों से अत्यधिक रक्तस्राव। बड़े या गहरे घाव। टीकाकरण के बाद असामान्य रक्तस्राव। जोड़ों में दर्द, सूजन। मूत्र या मल में रक्त। बिना किसी ज्ञात कारण के नाक से खून बहना। शिशुओं में अस्पष्ट चिड़चिड़ापन। जोड़ों में जकड़न।">
+                        Excessive bleeding from cuts or injuries. Large or deep bruises. Unusual bleeding after vaccinations. Pain, swelling in joints. Blood in urine or stool. Nosebleeds without known cause. In infants, unexplained irritability. Tightness in joints. Prolonged bleeding from tooth extraction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ACTIVITIES ============ -->
+    <section class="section activities-section" id="activities">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Our Activities" data-lang-bn="আমাদের কার্যক্রম" data-lang-hi="हमारी गतिविधियाँ">Our Activities</h2>
+                <div class="underline"></div>
+                <p data-lang-en="Programs and services we offer to our community" data-lang-bn="আমাদের সম্প্রদায়ের জন্য প্রদত্ত কার্যক্রম ও সেবা" data-lang-hi="हमारे समुदाय को दिए जाने वाले कार्यक्रम और सेवाएं">Programs and services we offer to our community</p>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">🏥</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Medical Camps" data-lang-bn="মেডিক্যাল ক্যাম্প" data-lang-hi="मेडिकल कैंप">Medical Camps</h3>
+                        <p data-lang-en="Regular medical camps organized with specialist hematologists for free check-ups, diagnosis and treatment guidance for hemophilia patients." 
+                           data-lang-bn="হিমোফিলিয়া রোগীদের বিনামূল্যে চেক-আপ, রোগ নির্ণয় এবং চিকিৎসা নির্দেশনার জন্য বিশেষজ্ঞ হেমাটোলজিস্টদের সাথে নিয়মিত মেডিক্যাল ক্যাম্পের আয়োজন।" 
+                           data-lang-hi="हीमोफीलिया रोगियों के लिए मुफ्त जांच, निदान और उपचार मार्गदर्शन के लिए विशेषज्ञ हेमेटोलॉजिस्ट के साथ नियमित मेडिकल कैंप आयोजित किए जाते हैं।">
+                            Regular medical camps organized with specialist hematologists for free check-ups, diagnosis and treatment guidance for hemophilia patients.
+                        </p>
+                    </div>
+                </div>
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">💪</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Physiotherapy Sessions" data-lang-bn="ফিজিওথেরাপি সেশন" data-lang-hi="फिजियोथेरेपी सत्र">Physiotherapy Sessions</h3>
+                        <p data-lang-en="Regular physiotherapy sessions to help patients maintain joint mobility, strengthen muscles and prevent joint damage caused by repeated bleeding episodes." 
+                           data-lang-bn="রোগীদের জয়েন্টের গতিশীলতা বজায় রাখতে, পেশী শক্তিশালী করতে এবং বারবার রক্তক্ষরণের কারণে জয়েন্টের ক্ষতি রোধ করতে নিয়মিত ফিজিওথেরাপি সেশন।" 
+                           data-lang-hi="रोगियों को जोड़ों की गतिशीलता बनाए रखने, मांसपेशियों को मजबूत करने और बार-बार रक्तस्राव से जोड़ों की क्षति को रोकने के लिए नियमित फिजियोथेरेपी सत्र।">
+                            Regular physiotherapy sessions to help patients maintain joint mobility, strengthen muscles and prevent joint damage caused by repeated bleeding episodes.
+                        </p>
+                    </div>
+                </div>
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">📢</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Awareness Programs" data-lang-bn="সচেতনতা কার্যক্রম" data-lang-hi="जागरूकता कार्यक्रम">Awareness Programs</h3>
+                        <p data-lang-en="Community awareness campaigns, World Hemophilia Day celebrations, school programs, and workshops to educate the public about bleeding disorders." 
+                           data-lang-bn="রক্তক্ষরণ ব্যাধি সম্পর্কে জনসাধারণকে শিক্ষিত করার জন্য সামাজিক সচেতনতা প্রচারণা, বিশ্ব হিমোফিলিয়া দিবস উদযাপন, স্কুল কার্যক্রম এবং কর্মশালা।" 
+                           data-lang-hi="रक्तस्राव विकारों के बारे में जनता को शिक्षित करने के लिए सामुदायिक जागरूकता अभियान, विश्व हीमोफीलिया दिवस समारोह, स्कूल कार्यक्रम और कार्यशालाएं।">
+                            Community awareness campaigns, World Hemophilia Day celebrations, school programs, and workshops to educate the public about bleeding disorders.
+                        </p>
+                    </div>
+                </div>
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">💊</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Factor Distribution" data-lang-bn="ফ্যাক্টর বিতরণ" data-lang-hi="फैक्टर वितरण">Factor Distribution</h3>
+                        <p data-lang-en="Distribution of clotting factor concentrates to registered patients during emergencies and for prophylaxis treatment to prevent bleeding episodes." 
+                           data-lang-bn="জরুরি অবস্থায় নিবন্ধিত রোগীদের মধ্যে ক্লটিং ফ্যাক্টর কনসেনট্রেট বিতরণ এবং রক্তক্ষরণ প্রতিরোধে প্রোফিল্যাক্সিস চিকিৎসা।" 
+                           data-lang-hi="आपातकालीन स्थितियों में पंजीकृत रोगियों को क्लॉटिंग फैक्टर कॉन्संट्रेट का वितरण और रक्तस्राव को रोकने के लिए प्रोफिलैक्सिस उपचार।">
+                            Distribution of clotting factor concentrates to registered patients during emergencies and for prophylaxis treatment to prevent bleeding episodes.
+                        </p>
+                    </div>
+                </div>
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">🎓</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Educational Support" data-lang-bn="শিক্ষামূলক সহায়তা" data-lang-hi="शैक्षिक सहायता">Educational Support</h3>
+                        <p data-lang-en="Scholarships and educational support for children with hemophilia to ensure they don't miss out on education due to their condition." 
+                           data-lang-bn="হিমোফিলিয়ায় আক্রান্ত শিশুদের জন্য বৃত্তি এবং শিক্ষামূলক সহায়তা যাতে তারা তাদের অবস্থার কারণে শিক্ষা থেকে বঞ্চিত না হয়।" 
+                           data-lang-hi="हीमोफीलिया वाले बच्चों के लिए छात्रवृत्ति और शैक्षिक सहायता ताकि वे अपनी स्थिति के कारण शिक्षा से वंचित न रहें।">
+                            Scholarships and educational support for children with hemophilia to ensure they don't miss out on education due to their condition.
+                        </p>
+                    </div>
+                </div>
+                <div class="activity-card animate-on-scroll">
+                    <div class="activity-card-header">👨‍👩‍👧‍👦</div>
+                    <div class="activity-card-body">
+                        <h3 data-lang-en="Family Counseling" data-lang-bn="পারিবারিক কাউন্সেলিং" data-lang-hi="पारिवारिक परामर्श">Family Counseling</h3>
+                        <p data-lang-en="Psychological counseling and support groups for patients and families to cope with the emotional challenges of living with a chronic bleeding disorder." 
+                           data-lang-bn="দীর্ঘস্থায়ী রক্তক্ষরণ ব্যাধির সাথে বসবাসের মানসিক চ্যালেঞ্জ মোকাবেলায় রোগী এবং পরিবারের জন্য মানসিক কাউন্সেলিং এবং সহায়তা গোষ্ঠী।" 
+                           data-lang-hi="पुरानी रक्तस्राव विकार के साथ रहने की भावनात्मक चुनौतियों से निपटने के लिए रोगियों और परिवारों के लिए मनोवैज्ञानिक परामर्श और सहायता समूह।">
+                            Psychological counseling and support groups for patients and families to cope with the emotional challenges of living with a chronic bleeding disorder.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ EMERGENCY / BLEEDING ============ -->
+    <section class="section emergency-section" id="emergency">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="⚠️ Bleeding Emergency Guide" data-lang-bn="⚠️ রক্তক্ষরণ জরুরি নির্দেশিকা" data-lang-hi="⚠️ रक्तस्राव आपातकालीन गाइड">⚠️ Bleeding Emergency Guide</h2>
+                <div class="underline"></div>
+                <p data-lang-en="What to do when a hemophilia patient starts bleeding" data-lang-bn="হিমোফিলিয়া রোগীর রক্তক্ষরণ শুরু হলে কী করবেন" data-lang-hi="जब हीमोफीलिया रोगी को रक्तस्राव शुरू हो तो क्या करें">What to do when a hemophilia patient starts bleeding</p>
+            </div>
+            <div class="emergency-grid">
+                <div class="emergency-card animate-on-scroll">
+                    <h3>🚨 <span data-lang-en="Immediate Steps" data-lang-bn="তাৎক্ষণিক পদক্ষেপ" data-lang-hi="तत्काल कदम">Immediate Steps</span></h3>
+                    <ul>
+                        <li data-lang-en="Stay calm and reassure the patient" data-lang-bn="শান্ত থাকুন এবং রোগীকে আশ্বস্ত করুন" data-lang-hi="शांत रहें और रोगी को आश्वस्त करें">Stay calm and reassure the patient</li>
+                        <li data-lang-en="Apply RICE method: Rest, Ice, Compression, Elevation" data-lang-bn="RICE পদ্ধতি প্রয়োগ করুন: বিশ্রাম, বরফ, সংকোচন, উচ্চতা" data-lang-hi="RICE विधि लागू करें: आराम, बर्फ, संपीड़न, ऊंचाई">Apply RICE method: Rest, Ice, Compression, Elevation</li>
+                        <li data-lang-en="Administer factor concentrate if available and trained" data-lang-bn="প্রশিক্ষিত হলে এবং পাওয়া গেলে ফ্যাক্টর কনসেনট্রেট দিন" data-lang-hi="यदि उपलब्ध हो और प्रशिक्षित हों तो फैक्टर कॉन्संट्रेट दें">Administer factor concentrate if available and trained</li>
+                        <li data-lang-en="Apply direct pressure with clean cloth on external wounds" data-lang-bn="বাহ্যিক ক্ষতের উপর পরিষ্কার কাপড় দিয়ে সরাসরি চাপ দিন" data-lang-hi="बाहरी घावों पर साफ कपड़े से सीधा दबाव डालें">Apply direct pressure with clean cloth on external wounds</li>
+                        <li data-lang-en="Contact Hemophilia Treatment Center immediately" data-lang-bn="অবিলম্বে হিমোফিলিয়া ট্রিটমেন্ট সেন্টারে যোগাযোগ করুন" data-lang-hi="तुरंत हीमोफीलिया उपचार केंद्र से संपर्क करें">Contact Hemophilia Treatment Center immediately</li>
+                    </ul>
+                </div>
+                <div class="emergency-card animate-on-scroll">
+                    <h3>🏥 <span data-lang-en="When to Go to Hospital" data-lang-bn="কখন হাসপাতালে যাবেন" data-lang-hi="अस्पताल कब जाएं">When to Go to Hospital</span></h3>
+                    <ul>
+                        <li data-lang-en="Head injury or severe headache after trauma" data-lang-bn="মাথায় আঘাত বা আঘাতের পরে তীব্র মাথাব্যথা" data-lang-hi="सिर की चोट या आघात के बाद गंभीर सिरदर्द">Head injury or severe headache after trauma</li>
+                        <li data-lang-en="Bleeding that doesn't stop with first aid" data-lang-bn="রক্তক্ষরণ যা প্রাথমিক চিকিৎসায় বন্ধ হচ্ছে না" data-lang-hi="रक्तस्राव जो प्राथमिक चिकित्सा से नहीं रुकता">Bleeding that doesn't stop with first aid</li>
+                        <li data-lang-en="Bleeding in neck, throat or tongue" data-lang-bn="ঘাড়, গলা বা জিভে রক্তক্ষরণ" data-lang-hi="गर्दन, गले या जीभ में रक्तस्राव">Bleeding in neck, throat or tongue</li>
+                        <li data-lang-en="Severe joint or muscle bleed with swelling" data-lang-bn="ফোলা সহ গুরুতর জয়েন্ট বা পেশীতে রক্তক্ষরণ" data-lang-hi="सूजन के साथ गंभीर जोड़ या मांसपेशी में रक्तस्राव">Severe joint or muscle bleed with swelling</li>
+                        <li data-lang-en="Abdominal pain or blood in urine/stool" data-lang-bn="পেটে ব্যথা বা প্রস্রাব/মলে রক্ত" data-lang-hi="पेट दर्द या मूत्र/मल में रक्त">Abdominal pain or blood in urine/stool</li>
+                    </ul>
+                </div>
+                <div class="emergency-card animate-on-scroll">
+                    <h3>❌ <span data-lang-en="What NOT to Do" data-lang-bn="যা করবেন না" data-lang-hi="क्या नहीं करना चाहिए">What NOT to Do</span></h3>
+                    <ul>
+                        <li data-lang-en="Do NOT give Aspirin or Ibuprofen" data-lang-bn="অ্যাসপিরিন বা আইবুপ্রোফেন দেবেন না" data-lang-hi="एस्पिरिन या इबुप्रोफेन न दें">Do NOT give Aspirin or Ibuprofen</li>
+                        <li data-lang-en="Do NOT apply tourniquet unless life-threatening" data-lang-bn="জীবন-হুমকি না হলে টুর্নিকেট প্রয়োগ করবেন না" data-lang-hi="जीवन-घातक न होने तक टूर्निकेट न लगाएं">Do NOT apply tourniquet unless life-threatening</li>
+                        <li data-lang-en="Do NOT ignore minor bleeds - treat early" data-lang-bn="ছোট রক্তক্ষরণ উপেক্ষা করবেন না - তাড়াতাড়ি চিকিৎসা করুন" data-lang-hi="छोटे रक्तस्राव को नज़रअंदाज़ न करें - जल्दी इलाज करें">Do NOT ignore minor bleeds - treat early</li>
+                        <li data-lang-en="Do NOT give intramuscular injections" data-lang-bn="ইন্ট্রামাসকুলার ইনজেকশন দেবেন না" data-lang-hi="इंट्रामस्कुलर इंजेक्शन न दें">Do NOT give intramuscular injections</li>
+                        <li data-lang-en="Do NOT delay treatment - 'Treat first, diagnose later'" data-lang-bn="চিকিৎসায় দেরি করবেন না - 'আগে চিকিৎসা করুন, পরে রোগ নির্ণয় করুন'" data-lang-hi="उपचार में देरी न करें - 'पहले इलाज करें, बाद में निदान करें'">Do NOT delay treatment - 'Treat first, diagnose later'</li>
+                    </ul>
+                </div>
+                <div class="emergency-card animate-on-scroll">
+                    <h3>📋 <span data-lang-en="Always Carry" data-lang-bn="সবসময় সাথে রাখুন" data-lang-hi="हमेशा साथ रखें">Always Carry</span></h3>
+                    <ul>
+                        <li data-lang-en="Hemophilia patient card/ID at all times" data-lang-bn="সর্বদা হিমোফিলিয়া পেশেন্ট কার্ড/আইডি সাথে রাখুন" data-lang-hi="हमेशा हीमोफीलिया रोगी कार्ड/आईडी साथ रखें">Hemophilia patient card/ID at all times</li>
+                        <li data-lang-en="Emergency contact numbers list" data-lang-bn="জরুরি যোগাযোগ নম্বর তালিকা" data-lang-hi="आपातकालीन संपर्क नंबर सूची">Emergency contact numbers list</li>
+                        <li data-lang-en="Medical records and treatment history" data-lang-bn="চিকিৎসা রেকর্ড এবং চিকিৎসার ইতিহাস" data-lang-hi="चिकित्सा रिकॉर्ड और उपचार इतिहास">Medical records and treatment history</li>
+                        <li data-lang-en="First aid kit with ice pack" data-lang-bn="আইস প্যাক সহ ফার্স্ট এইড কিট" data-lang-hi="आइस पैक के साथ प्राथमिक चिकित्सा किट">First aid kit with ice pack</li>
+                        <li data-lang-en="Factor concentrate if on home treatment" data-lang-bn="হোম ট্রিটমেন্টে থাকলে ফ্যাক্টর কনসেনট্রেট" data-lang-hi="यदि घरेलू उपचार पर हैं तो फैक्टर कॉन्संट्रेट">Factor concentrate if on home treatment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="emergency-helpline animate-on-scroll">
+                <h3 data-lang-en="24/7 Emergency Helpline" data-lang-bn="২৪/৭ জরুরি হেল্পলাইন" data-lang-hi="24/7 आपातकालीन हेल्पलाइन">24/7 Emergency Helpline</h3>
+                <p data-lang-en="Call us immediately in case of bleeding emergency" data-lang-bn="রক্তক্ষরণ জরুরি অবস্থায় অবিলম্বে আমাদের কল করুন" data-lang-hi="रक्तस्राव आपातकाल में तुरंत हमें कॉल करें">Call us immediately in case of bleeding emergency</p>
+                <div class="phone">📞 +91 9876543210</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DOS AND DONTS ============ -->
+    <section class="section dos-donts-section" id="dosdonts">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Do's and Don'ts for Patients" data-lang-bn="রোগীদের জন্য করণীয় ও বর্জনীয়" data-lang-hi="रोगियों के लिए क्या करें और क्या न करें">Do's and Don'ts for Patients</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="dos-donts-grid">
+                <div class="dos-card animate-on-scroll">
+                    <h3>✅ <span data-lang-en="Do's" data-lang-bn="করণীয়" data-lang-hi="क्या करें">Do's</span></h3>
+                    <ul>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Wear a medical alert bracelet/ID" data-lang-bn="মেডিক্যাল অ্যালার্ট ব্রেসলেট/আইডি পরুন" data-lang-hi="मेडिकल अलर्ट ब्रेसलेट/आईडी पहनें">Wear a medical alert bracelet/ID</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Exercise regularly - swimming, walking are excellent" data-lang-bn="নিয়মিত ব্যায়াম করুন - সাঁতার, হাঁটা চমৎকার" data-lang-hi="नियमित व्यायाम करें - तैराकी, पैदल चलना उत्कृष्ट है">Exercise regularly - swimming, walking are excellent</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Maintain healthy body weight" data-lang-bn="সুস্থ শরীরের ওজন বজায় রাখুন" data-lang-hi="स्वस्थ शरीर का वजन बनाए रखें">Maintain healthy body weight</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Take regular prophylaxis as prescribed" data-lang-bn="নির্ধারিত নিয়মিত প্রোফিল্যাক্সিস নিন" data-lang-hi="निर्धारित नियमित प्रोफिलैक्सिस लें">Take regular prophylaxis as prescribed</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Keep dental hygiene excellent to avoid dental procedures" data-lang-bn="দাঁতের চিকিৎসা এড়াতে দাঁতের স্বাস্থ্যবিধি চমৎকার রাখুন" data-lang-hi="दंत प्रक्रियाओं से बचने के लिए दंत स्वच्छता बनाए रखें">Keep dental hygiene excellent to avoid dental procedures</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Inform all doctors about your condition" data-lang-bn="সব ডাক্তারকে আপনার অবস্থা সম্পর্কে জানান" data-lang-hi="सभी डॉक्टरों को अपनी स्थिति के बारे में बताएं">Inform all doctors about your condition</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Get vaccinated (subcutaneous route only)" data-lang-bn="টিকা নিন (শুধুমাত্র সাবকিউটেনিয়াস রুটে)" data-lang-hi="टीकाकरण करवाएं (केवल चमड़े के नीचे)">Get vaccinated (subcutaneous route only)</span></li>
+                        <li><span class="do-icon">✓</span> <span data-lang-en="Keep a bleeding diary/record" data-lang-bn="রক্তক্ষরণের ডায়েরি/রেকর্ড রাখুন" data-lang-hi="रक्तस्राव डायरी/रिकॉर्ड रखें">Keep a bleeding diary/record</span></li>
+                    </ul>
+                </div>
+                <div class="donts-card animate-on-scroll">
+                    <h3>❌ <span data-lang-en="Don'ts" data-lang-bn="বর্জনীয়" data-lang-hi="क्या न करें">Don'ts</span></h3>
+                    <ul>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't take Aspirin, Ibuprofen, blood thinners" data-lang-bn="অ্যাসপিরিন, আইবুপ্রোফেন, ব্লাড থিনার খাবেন না" data-lang-hi="एस्पिरिन, इबुप्रोफेन, ब्लड थिनर न लें">Don't take Aspirin, Ibuprofen, blood thinners</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't play contact sports (football, boxing, wrestling)" data-lang-bn="কন্ট্যাক্ট স্পোর্টস খেলবেন না (ফুটবল, বক্সিং, কুস্তি)" data-lang-hi="संपर्क खेल न खेलें (फुटबॉल, बॉक्सिंग, कुश्ती)">Don't play contact sports (football, boxing, wrestling)</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't ignore even minor bleeding" data-lang-bn="সামান্য রক্তক্ষরণও উপেক্ষা করবেন না" data-lang-hi="मामूली रक्तस्राव को भी नज़रअंदाज़ न करें">Don't ignore even minor bleeding</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't get intramuscular injections" data-lang-bn="ইন্ট্রামাসকুলার ইনজেকশন নেবেন না" data-lang-hi="इंट्रामस्कुलर इंजेक्शन न लगवाएं">Don't get intramuscular injections</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't delay treatment when bleeding occurs" data-lang-bn="রক্তক্ষরণ হলে চিকিৎসায় দেরি করবেন না" data-lang-hi="रक्तस्राव होने पर उपचार में देरी न करें">Don't delay treatment when bleeding occurs</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't undergo surgery without factor replacement" data-lang-bn="ফ্যাক্টর রিপ্লেসমেন্ট ছাড়া সার্জারি করাবেন না" data-lang-hi="फैक्टर रिप्लेसमेंट के बिना सर्जरी न करवाएं">Don't undergo surgery without factor replacement</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't use razor blades - use electric shaver" data-lang-bn="রেজার ব্লেড ব্যবহার করবেন না - ইলেকট্রিক শেভার ব্যবহার করুন" data-lang-hi="रेज़र ब्लेड का उपयोग न करें - इलेक्ट्रिक शेवर का उपयोग करें">Don't use razor blades - use electric shaver</span></li>
+                        <li><span class="dont-icon">✗</span> <span data-lang-en="Don't miss regular check-ups at HTC" data-lang-bn="HTC তে নিয়মিত চেক-আপ মিস করবেন না" data-lang-hi="HTC में नियमित जांच न छोड़ें">Don't miss regular check-ups at HTC</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DONATION ============ -->
+    <section class="section donation-section" id="donate">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Support Our Cause" data-lang-bn="আমাদের উদ্দেশ্যে সহায়তা করুন" data-lang-hi="हमारे उद्देश्य का समर्थन करें">Support Our Cause</h2>
+                <div class="underline"></div>
+                <p data-lang-en="Your donation can save lives - every contribution matters" data-lang-bn="আপনার দান জীবন বাঁচাতে পারে - প্রতিটি অবদান গুরুত্বপূর্ণ" data-lang-hi="आपका दान जीवन बचा सकता है - हर योगदान मायने रखता है">Your donation can save lives - every contribution matters</p>
+            </div>
+            <div class="donation-content">
+                <div class="qr-section animate-on-scroll">
+                    <div class="qr-code-box">
+                        <!-- ============================================================ -->
+                        <!-- তোমার QR CODE IMAGE এখানে রাখো                              -->
+                        <!-- নিচের div টা মুছে দিয়ে তোমার QR code image দাও:             -->
+                        <!-- <img src="your-qr-code.png" alt="QR Code" width="250">       -->
+                        <!-- ============================================================ -->
+                        <div class="qr-placeholder">
+                            <div class="qr-icon">📱</div>
+                            <p data-lang-en="Scan QR Code to Donate" data-lang-bn="দান করতে QR কোড স্ক্যান করুন" data-lang-hi="दान करने के लिए QR कोड स्कैन करें">Scan QR Code to Donate</p>
+                            <small data-lang-en="(Replace with actual QR image)" data-lang-bn="(আসল QR ছবি দিয়ে পরিবর্তন করুন)" data-lang-hi="(वास्तविक QR छवि से बदलें)">(Replace with actual QR image)</small>
+                        </div>
+                    </div>
+                    <p style="margin-top:15px; color: var(--text-light);" data-lang-en="Scan with any UPI app to donate" data-lang-bn="দান করতে যেকোনো UPI অ্যাপ দিয়ে স্ক্যান করুন" data-lang-hi="दान करने के लिए किसी भी UPI ऐप से स्कैन करें">Scan with any UPI app to donate</p>
+                </div>
+                <div class="donation-info animate-on-scroll">
+                    <h3 data-lang-en="Why Donate?" data-lang-bn="কেন দান করবেন?" data-lang-hi="दान क्यों करें?">Why Donate?</h3>
+                    <p data-lang-en="Your generous donation helps us provide life-saving clotting factor concentrates, organize medical camps, support patient education, and run awareness programs across Calcutta." 
+                       data-lang-bn="আপনার উদার দান আমাদের জীবন রক্ষাকারী ক্লটিং ফ্যাক্টর কনসেনট্রেট প্রদান, মেডিক্যাল ক্যাম্পের আয়োজন, রোগী শিক্ষা সহায়তা এবং কলকাতা জুড়ে সচেতনতা কার্যক্রম পরিচালনা করতে সাহায্য করে।" 
+                       data-lang-hi="आपका उदार दान हमें जीवन रक्षक क्लॉटिंग फैक्टर कॉन्संट्रेट प्रदान करने, मेडिकल कैंप आयोजित करने, रोगी शिक्षा का समर्थन करने और कलकत्ता भर में जागरूकता कार्यक्रम चलाने में मदद करता है।">
+                        Your generous donation helps us provide life-saving clotting factor concentrates, organize medical camps, support patient education, and run awareness programs across Calcutta.
+                    </p>
+                    <p data-lang-en="All donations are eligible for tax exemption under Section 80G of the Income Tax Act." 
+                       data-lang-bn="সমস্ত দান আয়কর আইনের ধারা 80G এর অধীনে কর ছাড়ের জন্য যোগ্য।" 
+                       data-lang-hi="सभी दान आयकर अधिनियम की धारा 80G के तहत कर छूट के लिए पात्र हैं।">
+                        All donations are eligible for tax exemption under Section 80G of the Income Tax Act.
+                    </p>
+                    
+                    <!-- ============================================================ -->
+                    <!-- নিচের Bank Details তোমার আসল তথ্য দিয়ে পরিবর্তন করো        -->
+                    <!-- ============================================================ -->
+                    <div class="bank-details">
+                        <h4 data-lang-en="Bank Transfer Details" data-lang-bn="ব্যাংক ট্রান্সফার তথ্য" data-lang-hi="बैंक ट्रांसफर विवरण">Bank Transfer Details</h4>
+                        <div class="bank-detail-row">
+                            <span class="label" data-lang-en="Account Name:" data-lang-bn="অ্যাকাউন্টের নাম:" data-lang-hi="खाता नाम:">Account Name:</span>
+                            <span class="value">Hemophilia Society Calcutta</span>
+                        </div>
+                        <div class="bank-detail-row">
+                            <span class="label" data-lang-en="Account No:" data-lang-bn="অ্যাকাউন্ট নম্বর:" data-lang-hi="खाता संख्या:">Account No:</span>
+                            <span class="value">XXXXXXXXXXXX</span>
+                        </div>
+                        <div class="bank-detail-row">
+                            <span class="label">IFSC:</span>
+                            <span class="value">XXXX0XXXXXX</span>
+                        </div>
+                        <div class="bank-detail-row">
+                            <span class="label" data-lang-en="Bank:" data-lang-bn="ব্যাংক:" data-lang-hi="बैंक:">Bank:</span>
+                            <span class="value">State Bank of India</span>
+                        </div>
+                        <div class="bank-detail-row">
+                            <span class="label">UPI ID:</span>
+                            <span class="value">hemophilia@upi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PATIENT REGISTRATION ============ -->
+    <section class="section registration-section" id="register">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Patient Registration" data-lang-bn="রোগী নিবন্ধন" data-lang-hi="रोगी पंजीकरण">Patient Registration</h2>
+                <div class="underline"></div>
+                <p data-lang-en="Register as a new patient to receive support and services" data-lang-bn="সহায়তা এবং সেবা পেতে নতুন রোগী হিসেবে নিবন্ধন করুন" data-lang-hi="सहायता और सेवाएं प्राप्त करने के लिए नए रोगी के रूप में पंजीकरण करें">Register as a new patient to receive support and services</p>
+            </div>
+            <div class="form-container animate-on-scroll">
+                <form id="patientForm" onsubmit="submitForm(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label data-lang-en="Full Name *" data-lang-bn="পুরো নাম *" data-lang-hi="पूरा नाम *">Full Name *</label>
+                            <input type="text" id="name" required placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Age *" data-lang-bn="বয়স *" data-lang-hi="आयु *">Age *</label>
+                            <input type="number" id="age" required min="0" max="120" placeholder="Enter age">
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Gender *" data-lang-bn="লিঙ্গ *" data-lang-hi="लिंग *">Gender *</label>
+                            <select id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male / পুরুষ / पुरुष</option>
+                                <option value="Female">Female / মহিলা / महिला</option>
+                                <option value="Other">Other / অন্যান্য / अन्य</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Phone Number *" data-lang-bn="ফোন নম্বর *" data-lang-hi="फोन नंबर *">Phone Number *</label>
+                            <input type="tel" id="phone" required placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Email" data-lang-bn="ইমেইল" data-lang-hi="ईमेल">Email</label>
+                            <input type="email" id="email" placeholder="Enter email (optional)">
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Blood Group" data-lang-bn="রক্তের গ্রুপ" data-lang-hi="रक्त समूह">Blood Group</label>
+                            <select id="bloodGroup">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Type of Hemophilia *" data-lang-bn="হিমোফিলিয়ার ধরন *" data-lang-hi="हीमोफीलिया का प्रकार *">Type of Hemophilia *</label>
+                            <select id="hemophiliaType" required>
+                                <option value="">Select Type</option>
+                                <option value="Hemophilia A">Hemophilia A (Factor VIII)</option>
+                                <option value="Hemophilia B">Hemophilia B (Factor IX)</option>
+                                <option value="VWD">Von Willebrand Disease</option>
+                                <option value="Other">Other / অন্যান্য / अन्य</option>
+                                <option value="Not Sure">Not Sure / নিশ্চিত নই / निश्चित नहीं</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Severity" data-lang-bn="তীব্রতা" data-lang-hi="गंभीरता">Severity</label>
+                            <select id="severity">
+                                <option value="">Select Severity</option>
+                                <option value="Mild">Mild / মৃদু / हल्का</option>
+                                <option value="Moderate">Moderate / মাঝারি / मध्यम</option>
+                                <option value="Severe">Severe / গুরুতর / गंभीर</option>
+                                <option value="Unknown">Unknown / অজানা / अज्ञात</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label data-lang-en="Full Address *" data-lang-bn="সম্পূর্ণ ঠিকানা *" data-lang-hi="पूरा पता *">Full Address *</label>
+                            <textarea id="address" required placeholder="Enter complete address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Emergency Contact Name *" data-lang-bn="জরুরি যোগাযোগের নাম *" data-lang-hi="आपातकालीन संपर्क नाम *">Emergency Contact Name *</label>
+                            <input type="text" id="emergencyContact" required placeholder="Emergency contact name">
+                        </div>
+                        <div class="form-group">
+                            <label data-lang-en="Emergency Contact Phone *" data-lang-bn="জরুরি যোগাযোগের ফোন *" data-lang-hi="आपातकालीन संपर्क फोन *">Emergency Contact Phone *</label>
+                            <input type="tel" id="emergencyPhone" required placeholder="Emergency contact phone">
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary" id="submitBtn" data-lang-en="Submit Registration" data-lang-bn="নিবন্ধন জমা দিন" data-lang-hi="पंजीकरण जमा करें">Submit Registration</button>
+                    </div>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESOURCES ============ -->
+    <section class="section resources-section" id="resources">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2 data-lang-en="Useful Resources" data-lang-bn="দরকারি তথ্যসূত্র" data-lang-hi="उपयोगी संसाधन">Useful Resources</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">🌍</div>
+                    <h3 data-lang-en="World Federation of Hemophilia" data-lang-bn="ওয়ার্ল্ড ফেডারেশন অফ হিমোফিলিয়া" data-lang-hi="वर्ल्ड फेडरेशन ऑफ हीमोफीलिया">World Federation of Hemophilia</h3>
+                    <p data-lang-en="Visit wfh.org for global resources, treatment guidelines, and research updates on bleeding disorders." 
+                       data-lang-bn="রক্তক্ষরণ ব্যাধি সম্পর্কে বৈশ্বিক তথ্য, চিকিৎসা নির্দেশিকা এবং গবেষণা আপডেটের জন্য wfh.org দেখুন।" 
+                       data-lang-hi="रक्तस्राव विकारों पर वैश्विक संसाधनों, उपचार दिशानिर्देशों और शोध अपडेट के लिए wfh.org पर जाएं।">
+                        Visit wfh.org for global resources, treatment guidelines, and research updates on bleeding disorders.
+                    </p>
+                </div>
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">🇮🇳</div>
+                    <h3 data-lang-en="Hemophilia Federation India" data-lang-bn="হিমোফিলিয়া ফেডারেশন ইন্ডিয়া" data-lang-hi="हीमोफीलिया फेडरेशन इंडिया">Hemophilia Federation India</h3>
+                    <p data-lang-en="National organization working for the welfare of hemophilia patients across India. Visit hemophilia.in for more information." 
+                       data-lang-bn="সারা ভারতে হিমোফিলিয়া রোগীদের কল্যাণে কাজ করা জাতীয় সংস্থা। আরও তথ্যের জন্য hemophilia.in দেখুন।" 
+                       data-lang-hi="पूरे भारत में हीमोफीलिया रोगियों के कल्याण के लिए काम करने वाला राष्ट्रीय संगठन। अधिक जानकारी के लिए hemophilia.in पर जाएं।">
+                        National organization working for the welfare of hemophilia patients across India. Visit hemophilia.in for more information.
+                    </p>
+                </div>
+                <div class="resource-card animate-on-scroll">
+                    <div class="resource-icon">📖</div>
+                    <h3 data-lang-en="Patient Education Materials" data-lang-bn="রোগী শিক্ষা উপকরণ" data-lang-hi="रोगी शिक्षा सामग्री">Patient Education Materials</h3>
+                    <p data-lang-en="Download brochures, guides, and educational materials about living with hemophilia. Contact us for printed copies." 
+                       data-lang-bn="হিমোফিলিয়ার সাথে বসবাস সম্পর্কে ব্রোশিয়ার, গাইড এবং শিক্ষামূলক উপকরণ ডাউনলোড করুন। মুদ্রিত কপির জন্য আমাদের সাথে যোগাযোগ করুন।" 
+                       data-lang-hi="हीमोफीलिया के साथ जीवन जीने के बारे में ब्रोशर, गाइड और शैक्षिक सामग्री डाउनलोड करें। मुद्रित प्रतियों के लिए हमसे संपर्क करें।">
+                        Download brochures, guides, and educational materials about living with hemophilia. Contact us for printed copies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Hemophilia Society</h3>
+                    <p data-lang-en="Calcutta Chapter is dedicated to improving the lives of people with hemophilia and other bleeding disorders through comprehensive care and support." 
+                       data-lang-bn="কলকাতা চ্যাপ্টার ব্যাপক যত্ন এবং সহায়তার মাধ্যমে হিমোফিলিয়া এবং অন্যান্য রক্তক্ষরণজনিত রোগে আক্রান্ত মানুষদের জীবন উন্নত করতে নিবেদিত।" 
+                       data-lang-hi="कलकत्ता चैप्टर व्यापक देखभाल और सहायता के माध्यम से हीमोफीलिया और अन्य रक्तस्राव विकारों वाले लोगों के जीवन में सुधार के लिए समर्पित है।">
+                        Calcutta Chapter is dedicated to improving the lives of people with hemophilia and other bleeding disorders through comprehensive care and support.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Quick Links" data-lang-bn="দ্রুত লিঙ্ক" data-lang-hi="त्वरित लिंक">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" data-lang-en="Home" data-lang-bn="হোম" data-lang-hi="होम">Home</a></li>
+                        <li><a href="#about" data-lang-en="About Us" data-lang-bn="আমাদের সম্পর্কে" data-lang-hi="हमारे बारे में">About Us</a></li>
+                        <li><a href="#hemophilia" data-lang-en="About Hemophilia" data-lang-bn="হিমোফিলিয়া সম্পর্কে" data-lang-hi="हीमोफीलिया के बारे में">About Hemophilia</a></li>
+                        <li><a href="#activities" data-lang-en="Activities" data-lang-bn="কার্যক্রম" data-lang-hi="गतिविधियाँ">Activities</a></li>
+                        <li><a href="#emergency" data-lang-en="Emergency Guide" data-lang-bn="জরুরি নির্দেশিকা" data-lang-hi="आपातकालीन गाइड">Emergency Guide</a></li>
+                        <li><a href="#register" data-lang-en="Patient Registration" data-lang-bn="রোগী নিবন্ধন" data-lang-hi="रोगी पंजीकरण">Patient Registration</a></li>
+                        <li><a href="#donate" data-lang-en="Donate" data-lang-bn="দান করুন" data-lang-hi="दान करें">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Important Links" data-lang-bn="গুরুত্বপূর্ণ লিঙ্ক" data-lang-hi="महत्वपूर्ण लिंक">Important Links</h3>
+                    <ul>
+                        <li><a href="https://www.wfh.org" target="_blank">WFH (wfh.org)</a></li>
+                        <li><a href="https://www.hemophilia.in" target="_blank">HFI (hemophilia.in)</a></li>
+                        <li><a href="#dosdonts" data-lang-en="Do's & Don'ts" data-lang-bn="করণীয় ও বর্জনীয়" data-lang-hi="क्या करें और क्या न करें">Do's & Don'ts</a></li>
+                        <li><a href="#resources" data-lang-en="Resources" data-lang-bn="তথ্যসূত্র" data-lang-hi="संसाधन">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Contact Us" data-lang-bn="যোগাযোগ করুন" data-lang-hi="हमसे संपर्क करें">Contact Us</h3>
+                    <!-- ============================================================ -->
+                    <!-- নিচের Contact Details তোমার আসল তথ্য দিয়ে পরিবর্তন করো   -->
+                    <!-- ============================================================ -->
+                    <div class="footer-contact-item">
+                        <span class="fc-icon">📍</span>
+                        <span>123 Example Street, Kolkata, West Bengal - 700001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="fc-icon">📞</span>
+                        <span>+91 9876543210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="fc-icon">📧</span>
+                        <span>hemophilia.calcutta@email.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="fc-icon">🕐</span>
+                        <span data-lang-en="Mon-Sat: 10AM - 5PM" data-lang-bn="সোম-শনি: সকাল ১০টা - বিকাল ৫টা" data-lang-hi="सोम-शनि: सुबह 10 - शाम 5">Mon-Sat: 10AM - 5PM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Hemophilia Society - Calcutta Chapter. <span data-lang-en="All Rights Reserved." data-lang-bn="সমস্ত অধিকার সংরক্ষিত।" data-lang-hi="सर्वाधिकार सुरक्षित।">All Rights Reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        // ============================================================
+        // ⚠️ এই URL টি তোমার Google Apps Script এর URL দিয়ে পরিবর্তন করো
+        // ============================================================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDrQaHaohOHXiZ315UdsUJbv4Lin_q446rvaJR99bIJu4d84lE654uePE--Y_SoJAB/exec';
+        // উদাহরণ: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx.../exec';
+
+
+        // ============ MOBILE MENU ============
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            const overlay = document.getElementById('navOverlay');
+            
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+                document.getElementById('hamburger').classList.remove('active');
+                document.getElementById('navOverlay').classList.remove('active');
+            });
+        });
+
+        // ============ LANGUAGE SWITCHING ============
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update all elements with data-lang attributes
+            document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
+                const text = el.getAttribute('data-lang-' + lang);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        // For form inputs, update placeholder
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // ============ FORM SUBMISSION TO GOOGLE SHEETS ============
+        async function submitForm(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                bloodGroup: document.getElementById('bloodGroup').value,
+                hemophiliaType: document.getElementById('hemophiliaType').value,
+                severity: document.getElementById('severity').value,
+                emergencyContact: document.getElementById('emergencyContact').value,
+                emergencyPhone: document.getElementById('emergencyPhone').value
+            };
+
+            // Validate
+            if (!formData.name || !formData.age || !formData.gender || !formData.phone || !formData.hemophiliaType || !formData.address || !formData.emergencyContact || !formData.emergencyPhone) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = currentLang === 'bn' ? 'সমস্ত প্রয়োজনীয় ক্ষেত্র পূরণ করুন!' : 
+                                         currentLang === 'hi' ? 'सभी आवश्यक फ़ील्ड भरें!' : 
+                                         'Please fill all required fields!';
+                return;
+            }
+
+            // Show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span>' + 
+                                 (currentLang === 'bn' ? 'জমা দেওয়া হচ্ছে...' : 
+                                  currentLang === 'hi' ? 'जमा किया जा रहा है...' : 
+                                  'Submitting...');
+            formMessage.className = 'form-message loading';
+            formMessage.textContent = currentLang === 'bn' ? 'ডেটা জমা দেওয়া হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...' :
+                                     currentLang === 'hi' ? 'डेटा जमा किया जा रहा है, कृपया प्रतीक्षा करें...' :
+                                     'Submitting data, please wait...';
+
+            try {
+                // Check if URL is configured
+                if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                    throw new Error('Google Script URL not configured');
+                }
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Since mode is 'no-cors', we can't read the response
+                // So we assume success if no error is thrown
+                formMessage.className = 'form-message success';
+                formMessage.textContent = currentLang === 'bn' ? '✅ নিবন্ধন সফল হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।' :
+                                         currentLang === 'hi' ? '✅ पंजीकरण सफल! हम जल्द ही आपसे संपर्क करेंगे।' :
+                                         '✅ Registration successful! We will contact you soon.';
+                
+                // Reset form
+                document.getElementById('patientForm').reset();
+
+            } catch (error) {
+                if (error.message === 'Google Script URL not configured') {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = '⚠️ Google Script URL is not configured. Please set up the Google Apps Script URL in the code. (For developer: Replace YOUR_GOOGLE_APPS_SCRIPT_URL_HERE with actual URL)';
+                    
+                    // Also log the data that would be sent
+                    console.log('Form Data (would be sent to Google Sheets):', formData);
+                    console.log('Please configure GOOGLE_SCRIPT_URL in the JavaScript section.');
+                } else {
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = currentLang === 'bn' ? '❌ ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।' :
+                                             currentLang === 'hi' ? '❌ त्रुटि हुई। कृपया पुनः प्रयास करें।' :
+                                             '❌ Error occurred. Please try again.';
+                }
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = currentLang === 'bn' ? 'নিবন্ধন জমা দিন' :
+                                     currentLang === 'hi' ? 'पंजीकरण जमा करें' :
+                                     'Submit Registration';
+            }
+        }
+
+        // ============ BACK TO TOP BUTTON ============
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // ============ SCROLL ANIMATIONS ============
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============ SMOOTH SCROLL FOR ANCHOR LINKS ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
